@@ -22,14 +22,24 @@ for (let i = 0; i < buttons.length; i++) {
 	button.addEventListener("click", function () {
 		makeSound(this.id);
 		button.classList.add("pressed");
-		setTimeout(function(){
-			button.classList.remove("pressed")
+		setTimeout(function () {
+			button.classList.remove("pressed");
 		}, 100);
 	});
 }
 
 //LISTENERS
 window.addEventListener("keydown", startGame);
+
+// for (let i = 0; i < buttons.length; i++) {
+// 	const button = buttons[i];
+// 	button.addEventListener("click", function () {
+// 		if(button.id === orderOfFields[0]){
+// 			addRandomColor()
+// 		}
+// 		console.log(orderOfFields);
+// 	});
+// }
 
 //FUNCTIONS
 function firstColor() {
@@ -45,6 +55,15 @@ function addRandomColor() {
 function startGame() {
 	levelTitle.textContent = `Level ${level}`;
 	makeSound(orderOfFields[0]);
+	for (let i = 0; i < buttons.length; i++) {
+		const button = buttons[i].id;
+		if (button === orderOfFields[0]) {
+			buttons[i].classList.add("pressed");
+			setTimeout(function () {
+				buttons[i].classList.remove("pressed");
+			}, 100);
+		}
+	}
 }
 
 function makeSound(key) {
@@ -73,4 +92,4 @@ firstColor();
 //CONSOLE LOGS
 // console.log(buttons);
 // console.log(arrayButtonsId);
-console.log(orderOfFields);
+// console.log(orderOfFields);e
